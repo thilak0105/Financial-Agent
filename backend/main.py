@@ -224,21 +224,25 @@ async def get_general_market_news(category: str = "general"):
 @app.get("/api/portfolio")
 async def get_portfolio():
     """Get portfolio data for both Indian and US markets."""
+    india_data = {"error": "India portfolio unavailable"}
+    us_data = {"error": "US portfolio unavailable"}
+
     try:
-        # Get India portfolio from our PaperTradingEngine
         india_data = india_engine.get_portfolio()
-        
-        # Get US portfolio from Alpaca
-        us_data = get_alpaca_portfolio()
-        
-        return {
-            "india": india_data,
-            "us": us_data
-        }
     except Exception as e:
-        # Log the exception for debugging
-        print(f"Error in /api/portfolio: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        print(f"Error in India portfolio: {e}")
+        india_data = {"error": str(e)}
+
+    try:
+        us_data = get_alpaca_portfolio()
+    except Exception as e:
+        print(f"Error in US portfolio: {e}")
+        us_data = {"error": str(e)}
+
+    return {
+        "india": india_data,
+        "us": us_data
+    }
 
 @app.post("/api/trade")
 async def execute_trade(request: TradeRequest):

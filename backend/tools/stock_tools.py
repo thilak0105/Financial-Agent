@@ -112,11 +112,44 @@ def get_stock_price(symbol: str) -> dict:
     try:
         resolved_symbol = _resolve_symbol(symbol)
         stock = yf.Ticker(resolved_symbol)
-        info = stock.info
+        info = {}
+        try:
+            info = stock.info or {}
+        except Exception:
+            info = {}
 
         # yfinance sometimes returns empty dicts for invalid symbols
         if not info or info.get('regularMarketPrice') is None:
-            return {"error": f"Invalid symbol or no data found for {symbol}"}
+            history = stock.history(period="5d", interval="1d")
+            if history.empty:
+                return {"error": f"Invalid symbol or no data found for {symbol}"}
+
+            closes = history["Close"].dropna()
+            highs = history["High"].dropna()
+            lows = history["Low"].dropna()
+            volumes = history["Volume"].dropna()
+
+            if closes.empty:
+                return {"error": f"Invalid symbol or no data found for {symbol}"}
+
+            current_price = float(closes.iloc[-1])
+            previous_close = float(closes.iloc[-2]) if len(closes) > 1 else current_price
+            change = current_price - previous_close
+            change_percent = (change / previous_close * 100) if previous_close else 0.0
+
+            return {
+                "symbol": resolved_symbol,
+                "current_price": current_price,
+                "previous_close": previous_close,
+                "change": float(change),
+                "change_percent": float(change_percent),
+                "volume": int(volumes.iloc[-1]) if not volumes.empty else 0,
+                "day_high": float(highs.iloc[-1]) if not highs.empty else current_price,
+                "day_low": float(lows.iloc[-1]) if not lows.empty else current_price,
+                "week_52_high": float(highs.max()) if not highs.empty else current_price,
+                "week_52_low": float(lows.min()) if not lows.empty else current_price,
+                "currency": "INR" if resolved_symbol.endswith(".NS") else "USD"
+            }
 
         return {
             "symbol": info.get("symbol") or resolved_symbol,
@@ -222,7 +255,7 @@ def get_technical_indicators(symbol: str) -> dict:
         stock = yf.Ticker(resolved_symbol)
         history = stock.history(period="100d")
 
-        if history.empty:
+        if history.empty or len(history.index) < 20:
             return {"error": f"Not enough historical data to calculate indicators for {symbol}"}
 
         close_prices = history['Close']
