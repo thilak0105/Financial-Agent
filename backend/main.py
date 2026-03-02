@@ -142,11 +142,27 @@ async def get_full_stock_details(symbol: str):
     try:
         price_data = get_stock_price(symbol)
         technical_data = get_technical_indicators(symbol)
-        if "error" in price_data or "error" in technical_data:
-            raise HTTPException(status_code=404, detail="Failed to fetch stock data.")
+
+        if "error" in price_data:
+            raise HTTPException(status_code=404, detail=price_data["error"])
+
+        if "error" in technical_data:
+            technical_data = {
+                "symbol": price_data.get("symbol", symbol),
+                "current_price": price_data.get("current_price", 0.0),
+                "SMA_20": 0.0,
+                "SMA_50": 0.0,
+                "RSI_14": 50.0,
+                "price_vs_SMA20": "unknown",
+                "price_vs_SMA50": "unknown",
+                "RSI_signal": "neutral",
+                "overall_signal": "neutral",
+                "summary": "Technical indicators are temporarily unavailable. Price data is shown.",
+            }
+
         return {
             "price_data": price_data,
-            "technical_data": technical_data
+            "technical_data": technical_data,
         }
     except HTTPException:
         raise

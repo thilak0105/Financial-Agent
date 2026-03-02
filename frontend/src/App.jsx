@@ -229,6 +229,7 @@ function StockPanel() {
     try {
       const res = await fetch(API(`/stocks/${sym}`))
       const json = await res.json()
+      if (!res.ok) throw new Error(json.detail || json.error || "Failed to fetch stock data")
       if (json.error) throw new Error(json.error)
       setData(json)
     } catch (e) {
@@ -408,8 +409,9 @@ function PortfolioPanelTab() {
   const fetchPortfolio = async () => {
     setLoading(true)
     try {
-        const res = await fetch('/api/portfolio')
+      const res = await fetch(API('/portfolio'))
         const json = await res.json()
+      if (!res.ok) throw new Error(json.detail || json.error || 'Failed to fetch portfolio')
         console.log('Portfolio API response:', json)
         setData(json)
     } catch(e) {
