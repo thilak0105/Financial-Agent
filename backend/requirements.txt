@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+yfinance
+python-dotenv
+sse-starlette
+google-generativeai
+alpaca-py
+requests
+groq
+openai

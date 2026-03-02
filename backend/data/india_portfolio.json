@@ -1,0 +1,228 @@
+{
+  "balance": 58500.920806884766,
+  "holdings": {
+    "INFY.NS": {
+      "quantity": 3,
+      "avg_buy_price": 1300.0999755859375,
+      "total_invested": 3900.2999267578125
+    },
+    "TATASTEEL.NS": {
+      "quantity": 6,
+      "avg_buy_price": 212.3300018310547,
+      "total_invested": 1273.9800109863281
+    },
+    "NSDL.BO": {
+      "quantity": 17,
+      "avg_buy_price": 916.7999877929688,
+      "total_invested": 15585.599792480469
+    },
+    "SBIN.NS": {
+      "quantity": 12,
+      "avg_buy_price": 1201.699951171875,
+      "total_invested": 14420.3994140625
+    },
+    "HDFCBANK.NS": {
+      "quantity": 4,
+      "avg_buy_price": 887.75,
+      "total_invested": 3551.0
+    },
+    "AXISBANK.NS": {
+      "quantity": 2,
+      "avg_buy_price": 1383.9000244140625,
+      "total_invested": 2767.800048828125
+    }
+  },
+  "trade_history": [
+    {
+      "action": "BUY",
+      "symbol": "TCS.NS",
+      "quantity": 2,
+      "price": 2637.39990234375,
+      "total_cost": 5274.7998046875,
+      "remaining_balance": 94725.2001953125,
+      "timestamp": "2026-03-01T01:01:15.001453"
+    },
+    {
+      "action": "BUY",
+      "symbol": "INFY.NS",
+      "quantity": 1,
+      "price": 1300.0999755859375,
+      "total_cost": 1300.0999755859375,
+      "remaining_balance": 93425.10021972656,
+      "timestamp": "2026-03-01T01:01:15.213021"
+    },
+    {
+      "action": "BUY",
+      "symbol": "INFY.NS",
+      "quantity": 2,
+      "price": 1300.0999755859375,
+      "total_cost": 2600.199951171875,
+      "remaining_balance": 90824.90026855469,
+      "timestamp": "2026-03-01T01:10:40.960302"
+    },
+    {
+      "action": "SELL",
+      "symbol": "TCS.NS",
+      "quantity": 2,
+      "price": 2637.39990234375,
+      "total_value": 5274.7998046875,
+      "profit_loss": 0.0,
+      "profit_loss_percent": 0.0,
+      "remaining_balance": 96099.70007324219,
+      "timestamp": "2026-03-01T01:26:40.039900"
+    },
+    {
+      "action": "BUY",
+      "symbol": "TATASTEEL.NS",
+      "quantity": 2,
+      "price": 212.3300018310547,
+      "total_cost": 424.6600036621094,
+      "remaining_balance": 95675.04006958008,
+      "timestamp": "2026-03-01T01:48:29.315868"
+    },
+    {
+      "action": "BUY",
+      "symbol": "TATASTEEL.NS",
+      "quantity": 2,
+      "price": 212.3300018310547,
+      "total_cost": 424.6600036621094,
+      "remaining_balance": 95250.38006591797,
+      "timestamp": "2026-03-01T01:54:36.284335"
+    },
+    {
+      "action": "BUY",
+      "symbol": "TATASTEEL.NS",
+      "quantity": 2,
+      "price": 212.3300018310547,
+      "total_cost": 424.6600036621094,
+      "remaining_balance": 94825.72006225586,
+      "timestamp": "2026-03-01T01:54:36.412628"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NSDL.BO",
+      "quantity": 2,
+      "price": 916.7999877929688,
+      "total_cost": 1833.5999755859375,
+      "remaining_balance": 92992.12008666992,
+      "timestamp": "2026-03-01T02:00:15.506338"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NSDL.BO",
+      "quantity": 5,
+      "price": 916.7999877929688,
+      "total_cost": 4583.999938964844,
+      "remaining_balance": 88408.12014770508,
+      "timestamp": "2026-03-01T02:00:59.461127"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NSDL.BO",
+      "quantity": 5,
+      "price": 916.7999877929688,
+      "total_cost": 4583.999938964844,
+      "remaining_balance": 83824.12020874023,
+      "timestamp": "2026-03-01T02:02:06.929615"
+    },
+    {
+      "action": "BUY",
+      "symbol": "SBIN.NS",
+      "quantity": 2,
+      "price": 1201.699951171875,
+      "total_cost": 2403.39990234375,
+      "remaining_balance": 81420.72030639648,
+      "timestamp": "2026-03-01T02:09:23.638973"
+    },
+    {
+      "action": "BUY",
+      "symbol": "SBIN.NS",
+      "quantity": 2,
+      "price": 1201.699951171875,
+      "total_cost": 2403.39990234375,
+      "remaining_balance": 79017.32040405273,
+      "timestamp": "2026-03-01T02:09:23.741409"
+    },
+    {
+      "action": "BUY",
+      "symbol": "HDFCBANK.NS",
+      "quantity": 3,
+      "price": 887.75,
+      "total_cost": 2663.25,
+      "remaining_balance": 76354.07040405273,
+      "timestamp": "2026-03-01T02:09:24.087026"
+    },
+    {
+      "action": "BUY",
+      "symbol": "SBIN.NS",
+      "quantity": 2,
+      "price": 1201.699951171875,
+      "total_cost": 2403.39990234375,
+      "remaining_balance": 73950.67050170898,
+      "timestamp": "2026-03-01T02:09:35.984180"
+    },
+    {
+      "action": "BUY",
+      "symbol": "SBIN.NS",
+      "quantity": 2,
+      "price": 1201.699951171875,
+      "total_cost": 2403.39990234375,
+      "remaining_balance": 71547.27059936523,
+      "timestamp": "2026-03-01T02:12:20.884107"
+    },
+    {
+      "action": "BUY",
+      "symbol": "AXISBANK.NS",
+      "quantity": 1,
+      "price": 1383.9000244140625,
+      "total_cost": 1383.9000244140625,
+      "remaining_balance": 70163.37057495117,
+      "timestamp": "2026-03-01T02:12:21.557383"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NSDL.BO",
+      "quantity": 5,
+      "price": 916.7999877929688,
+      "total_cost": 4583.999938964844,
+      "remaining_balance": 65579.37063598633,
+      "timestamp": "2026-03-01T02:12:33.824306"
+    },
+    {
+      "action": "BUY",
+      "symbol": "SBIN.NS",
+      "quantity": 2,
+      "price": 1201.699951171875,
+      "total_cost": 2403.39990234375,
+      "remaining_balance": 63175.97073364258,
+      "timestamp": "2026-03-01T02:12:34.146658"
+    },
+    {
+      "action": "BUY",
+      "symbol": "SBIN.NS",
+      "quantity": 2,
+      "price": 1201.699951171875,
+      "total_cost": 2403.39990234375,
+      "remaining_balance": 60772.57083129883,
+      "timestamp": "2026-03-01T02:12:34.264063"
+    },
+    {
+      "action": "BUY",
+      "symbol": "HDFCBANK.NS",
+      "quantity": 1,
+      "price": 887.75,
+      "total_cost": 887.75,
+      "remaining_balance": 59884.82083129883,
+      "timestamp": "2026-03-01T02:12:34.513092"
+    },
+    {
+      "action": "BUY",
+      "symbol": "AXISBANK.NS",
+      "quantity": 1,
+      "price": 1383.9000244140625,
+      "total_cost": 1383.9000244140625,
+      "remaining_balance": 58500.920806884766,
+      "timestamp": "2026-03-01T02:12:34.752812"
+    }
+  ]
+}
