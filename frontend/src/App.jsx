@@ -2,8 +2,10 @@ import { useState, useRef, useEffect } from "react"
 import ReactMarkdown from "react-markdown"
 
 // API base URL - uses proxy in development, env variable in production
-const API_BASE = import.meta.env.VITE_API_URL || ''
-const API = (path) => `${API_BASE}/api${path}`
+const DEFAULT_API_BASE = "https://financial-agent-0bul.onrender.com"
+const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? DEFAULT_API_BASE : "")
+const NORMALIZED_API_BASE = API_BASE.replace(/\/$/, "")
+const API = (path) => `${NORMALIZED_API_BASE}/api${path}`
 
 // ============ useSSE Hook (inline for simplicity) ============
 function useChat() {
@@ -410,12 +412,16 @@ function PortfolioPanelTab() {
     setLoading(true)
     try {
       const res = await fetch(API('/portfolio'))
-        const json = await res.json()
+      const contentType = res.headers.get('content-type') || ''
+      const raw = await res.text()
+      const json = contentType.includes('application/json')
+        ? JSON.parse(raw)
+        : { detail: raw }
       if (!res.ok) throw new Error(json.detail || json.error || 'Failed to fetch portfolio')
-        console.log('Portfolio API response:', json)
-        setData(json)
+      console.log('Portfolio API response:', json)
+      setData(json)
     } catch(e) {
-        console.error('Portfolio fetch error:', e)
+      console.error('Portfolio fetch error:', e)
     }
     setLoading(false)
 }
