@@ -33,25 +33,11 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS configuration
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:5174",
-    "http://127.0.0.1:5174",
-    "https://financial-agent-2gmon0x1h-thilak0105s-projects.vercel.app",
-]
-
-# Add production frontend URL from environment variable
-frontend_url = os.getenv("FRONTEND_URL")
-if frontend_url:
-    origins.append(frontend_url)
-
-# Allow all Vercel preview deployments
+# CORS configuration - allow all origins for now (can restrict later)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=False,  # Must be False when using "*"
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["*"],
