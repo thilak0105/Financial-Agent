@@ -5,6 +5,7 @@ This file sets up all API endpoints, including:
 - Real-time chat with the AI agent via Server-Sent Events (SSE).
 - Endpoints for stock data, news, portfolio management, and trading.
 """
+import os
 import json
 import asyncio
 from dotenv import load_dotenv
@@ -34,9 +35,17 @@ app = FastAPI(
 
 # CORS configuration
 origins = [
-    "http://localhost:5173", "http://127.0.0.1:5173",
-    "http://localhost:5174", "http://127.0.0.1:5174",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
 ]
+
+# Add production frontend URL from environment variable
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    origins.append(frontend_url)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -44,6 +53,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- Health Check Endpoint ---
+@app.get("/")
+async def root():
+    return {"status": "ok", "message": "FinSight API is running"}
+
+@app.get("/api/health")
+async def health():
+    return {"status": "healthy", "version": "1.0.0"}
 
 # --- Pydantic Models ---
 class ChatRequest(BaseModel):

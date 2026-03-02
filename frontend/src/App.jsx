@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react"
 import ReactMarkdown from "react-markdown"
 
-const API = (path) => `/api${path}`
+// API base URL - uses proxy in development, env variable in production
+const API_BASE = import.meta.env.VITE_API_URL || ''
+const API = (path) => `${API_BASE}/api${path}`
 
 // ============ useSSE Hook (inline for simplicity) ============
 function useChat() {
